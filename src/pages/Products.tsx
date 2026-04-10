@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "wouter";
 import { Star, ArrowLeft, Search } from "lucide-react";
 import blazonLogo from "@/assets/logo.png";
+import arrow from "@/assets/aerrow.png";
 import { allProducts } from "@/data/products";
 
 const categories = [
@@ -167,7 +168,7 @@ export default function Products() {
                           </span>
                         </div>
                         <div className="absolute top-2 right-2">
-                          <img src="/src/assets/aerrow.png" alt="arrow" className="w-8 h-8" />
+                          <img src={arrow} alt="arrow" className="w-8 h-8" />
                         </div>
                         <div className="absolute bottom-2 right-2 text-white/20 text-[9px] uppercase tracking-widest">
                           Hover to view
@@ -193,7 +194,7 @@ export default function Products() {
                         </span>
                       </div>
                       <div className="absolute top-2 right-2">
-                        <img src="/src/assets/aerrow.png" alt="arrow" className="w-8 h-8" />
+                        <img src={arrow} alt="arrow" className="w-8 h-8" />
                       </div>
                       {/* Top accent line */}
                       <div className="w-8 h-0.5 bg-primary rounded mb-3 mt-6" />

@@ -1,9 +1,9 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router as WouterRouter } from "wouter";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 
-function Router() {
+function Routes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -15,7 +15,9 @@ function Router() {
 
 function App() {
   return (
-    <Router />
+    <WouterRouter base="/blazon_website">
+      <Routes />
+    </WouterRouter>
   );
 }
 

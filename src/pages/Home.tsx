@@ -11,6 +11,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import blazonLogo from "@/assets/logo.png";
+import arrow from "@/assets/aerrow.png";
 import { allProducts } from "@/data/products";
 import {
   PHONE_1,
@@ -430,7 +431,7 @@ export default function Home() {
                         </span>
                       </div>
                       <div className="absolute top-2 right-2">
-                        <img src="/src/assets/aerrow.png" alt="arrow" className="w-8 h-8" />
+                        <img src={arrow} alt="arrow" className="w-8 h-8" />
                       </div>
                       <div className="absolute bottom-2 right-2 text-white/20 text-[9px] uppercase tracking-widest">
                         Hover
@@ -455,7 +456,7 @@ export default function Home() {
                       </span>
                     </div>
                     <div className="absolute top-2 right-2">
-                      <img src="/src/assets/aerrow.png" alt="arrow" className="w-8 h-8" />
+                      <img src={arrow} alt="arrow" className="w-8 h-8" />
                     </div>
                     <div className="w-8 h-0.5 bg-primary rounded mb-3 mt-6" />
                     <div className="flex-1 flex flex-col justify-center gap-3">
