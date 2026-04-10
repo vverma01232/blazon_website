@@ -10,5 +10,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: '/blazon_biotek_pvt_ltd/',
+  base: process.env.NODE_ENV === 'production' ? '/blazon_biotek_pvt_ltd/' : '/',
 })
