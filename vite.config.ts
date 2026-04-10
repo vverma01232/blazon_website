@@ -10,5 +10,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: '/blazon_website/',
+  base: '/blazon_biotek_pvt_ltd/',
 })
