@@ -30,9 +30,9 @@ import {
 } from "@/data/home-constants";
 import { homeStyles } from "@/styles/home-styles";
 import AnimatedDNA from "@/components/AnimatedDNA";
-import TestimonialsSection from "@/components/TestimonialsSection";
+// import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
-import ResourcesSection from "@/components/ResourcesSection";
+// import ResourcesSection from "@/components/ResourcesSection";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
