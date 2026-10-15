@@ -5,6 +5,8 @@ export const allProducts = [
     rating: 4.9,
     composition: "Levofloxacin 500mg TAB",
     description: "Time Tested & Trusted Quinolone for Polymicrobial infections",
+    Indications: "Respiratory tract infections, Urinary tract infections, Skin & soft tissue infections, Intra-abdominal infections",
+    review : "BLAZLIV-500 has been a game-changer in our treatment protocols. The efficacy and patient tolerance are outstanding, making it our go-to antibiotic for severe infections.",
     image: "https://www.blazonbiotek.com/lovable-uploads/9daa3a36-e113-44cd-a6e4-c4e4e6aeafa4.png",
   },
   {
@@ -98,6 +100,14 @@ export const allProducts = [
   {
     name: "BLAZCAL-D3",
     category: "Vitamin D3",
+    rating: 4.8,
+    composition: "Cholecalciferol 60,000 IU SOFT GEL CAP",
+    description: "Maximum Power of Vitamin D3 for your patients",
+    image: "https://www.blazonbiotek.com/lovable-uploads/3023a1de-33c9-4a0d-aba8-ab4c206f1d8a.png",
+  },
+  {
+    name: "B-LID Plus",
+    category: "PCM",
     rating: 4.8,
     composition: "Cholecalciferol 60,000 IU SOFT GEL CAP",
     description: "Maximum Power of Vitamin D3 for your patients",

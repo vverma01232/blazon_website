@@ -30,6 +30,9 @@ import {
 } from "@/data/home-constants";
 import { homeStyles } from "@/styles/home-styles";
 import AnimatedDNA from "@/components/AnimatedDNA";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import FAQSection from "@/components/FAQSection";
+import ResourcesSection from "@/components/ResourcesSection";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -107,7 +110,7 @@ export default function Home() {
           </a>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
-            {["About", "Products", "Leadership", "Contact"].map((item) => (
+            {["About", "Products", "Testimonials", "FAQ", "Resources", "Leadership", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -138,7 +141,7 @@ export default function Home() {
 
         {mobileMenuOpen && (
           <div className="md:hidden bg-[#0c1120]/95 backdrop-blur-xl border-t border-white/5 px-6 py-6 flex flex-col gap-4 text-white/70 text-sm">
-            {["About", "Products", "Leadership", "Contact"].map((item) => (
+            {["About", "Products", "Testimonials", "FAQ", "Resources", "Leadership", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -639,6 +642,15 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ─── TESTIMONIALS SECTION ─── */}
+      {/* <TestimonialsSection /> */}
+
+      {/* ─── FAQ SECTION ─── */}
+      <FAQSection />
+
+      {/* ─── RESOURCES SECTION ─── */}
+      {/* <ResourcesSection /> */}
 
       {/* ─── FOOTER ─── */}
       <footer
