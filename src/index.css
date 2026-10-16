@@ -21,6 +21,17 @@
   }
 }
 
+@font-face {
+  font-family: 'BrushScriptCustom';
+  src: url('/blazon_website/font/BrushScriptOpti-Regular.otf') format('opentype');
+}
+
+.brush-font {
+  font-family: 'BrushScriptCustom';
+  font-weight: normal;
+  font-style: normal;
+}
+
 .font-serif-italic {
   font-family: "Playfair Display", Georgia, serif;
   font-style: italic;
