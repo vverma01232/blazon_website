@@ -30,9 +30,6 @@ import {
 } from "@/data/home-constants";
 import { homeStyles } from "@/styles/home-styles";
 import AnimatedDNA from "@/components/AnimatedDNA";
-// import TestimonialsSection from "@/components/TestimonialsSection";
-import FAQSection from "@/components/FAQSection";
-// import ResourcesSection from "@/components/ResourcesSection";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -81,20 +78,18 @@ export default function Home() {
 
       {/* ─── NAVIGATION ─── */}
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
             ? "bg-[#080c14]/90 backdrop-blur-xl border-b border-white/5 py-3"
             : "bg-transparent py-5"
-        }`}
+          }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <a
             href="#"
-            className={`flex items-center gap-3 transition-all duration-500 ${
-              scrolled
+            className={`flex items-center gap-3 transition-all duration-500 ${scrolled
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-4 pointer-events-none"
-            }`}
+              }`}
           >
             <img
               src={blazonLogo}
@@ -102,15 +97,15 @@ export default function Home() {
               className="h-10 object-contain rounded-md"
             />
             <div>
-              <div className="text-white font-bold text-base leading-tight">
-                Blazon Biotek
+              <div className="text-white font-bold text-[22px] leading-tight brush-font">
+                Blazon Biotek Pvt. Ltd.
               </div>
-              <div className="text-white/90 text-[13px]">Pvt. Ltd.</div>
+              {/* <div className="text-white/90 text-[13px]">Pvt. Ltd.</div> */}
             </div>
           </a>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
-            {["About", "Products", "Testimonials", "FAQ", "Resources", "Leadership", "Contact"].map((item) => (
+            {["About", "Products", "Leadership"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -141,7 +136,7 @@ export default function Home() {
 
         {mobileMenuOpen && (
           <div className="md:hidden bg-[#0c1120]/95 backdrop-blur-xl border-t border-white/5 px-6 py-6 flex flex-col gap-4 text-white/70 text-sm">
-            {["About", "Products", "Testimonials", "FAQ", "Resources", "Leadership", "Contact"].map((item) => (
+            {["About", "Products", "Leadership"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -163,23 +158,22 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12 relative z-10 pt-24">
           {/* HERO LOGO */}
           <div
-            className={`transition-all duration-700 mb-6 ${
-              scrolled
+            className={`transition-all duration-700 mb-6 ${scrolled
                 ? "opacity-0 -translate-y-10"
                 : "opacity-100 translate-y-0"
-            }`}
+              }`}
           >
             <div className="flex items-center gap-4">
               <img
                 src={blazonLogo}
                 alt="Blazon Biotek"
-                className="h-20 md:h-24 object-contain drop-shadow-xl"
+                className="h-20 md:h-24 object-contain drop-shadow-xl brush-font"
               />
               <div>
-                <div className="text-white font-semibold text-2xl leading-tight">
-                  Blazon Biotek
+                <div className="text-white font-semibold text-[50px] leading-tight brush-font">
+                  Blazon Biotek Pvt. Ltd.
                 </div>
-                <div className="text-white/80 text-sm">Pvt. Ltd.</div>
+                {/* <div className="text-white/80 text-sm">Pvt. Ltd.</div> */}
               </div>
             </div>
             <div className="text-xs text-white/50 mb-2 mt-4 tracking-widest uppercase">
@@ -268,14 +262,13 @@ export default function Home() {
       {/* ─── STATS ─── */}
       <section className="py-20">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 place-items-center text-center">
             {[
               { value: "2005", label: "Established" },
               { value: "125+", label: "Products" },
               { value: "Delhi", label: "Headquarters" },
-              { value: "₹55L", label: "Paid Up Capital" },
             ].map(({ value, label }, i) => (
-              <div key={i} className="flex flex-col items-center">
+              <div key={i} className="flex flex-col items-center justify-center">
                 <div
                   className="text-4xl md:text-5xl font-bold mb-2 text-transparent bg-clip-text"
                   style={{
@@ -355,9 +348,9 @@ export default function Home() {
                   { label: "Registration No.", value: "142837" },
                   { label: "GSTIN", value: "09AACCB7427K1ZF" },
                   { label: "Incorporated", value: "22 Dec 2005" },
-                  { label: "Auth. Capital", value: "Rs. 5,500,000.00" },
-                  { label: "Paid Up Capital", value: "Rs. 5,500,000.00" },
-                  { label: "Last AGM", value: "30 Dec 2023" },
+                  // { label: "Auth. Capital", value: "Rs. 5,500,000.00" },
+                  // { label: "Paid Up Capital", value: "Rs. 5,500,000.00" },
+                  { label: "Last AGM", value: "01 April 2026" },
                 ].map(({ label, value }, i) => (
                   <div
                     key={i}
@@ -517,7 +510,7 @@ export default function Home() {
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-14 text-center">
             The People Behind <br />
-            <span className="font-normal text-white/50">
+            <span className="font-normal text-white/50 brush-font">
               Blazon Biotek's Success
             </span>
           </h2>
@@ -643,15 +636,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── TESTIMONIALS SECTION ─── */}
-      {/* <TestimonialsSection /> */}
-
-      {/* ─── FAQ SECTION ─── */}
-      <FAQSection />
-
-      {/* ─── RESOURCES SECTION ─── */}
-      {/* <ResourcesSection /> */}
-
       {/* ─── FOOTER ─── */}
       <footer
         className="border-t border-white/8 pt-16 pb-8"
@@ -668,7 +652,7 @@ export default function Home() {
                   className="h-12 object-contain rounded-md"
                 />
                 <div>
-                  <div className="text-white font-bold text-sm leading-tight">
+                  <div className="text-white font-bold text-xl leading-tight brush-font">
                     Blazon Biotek
                   </div>
                   <div className="text-white/90 text-xs">Pvt. Ltd.</div>
