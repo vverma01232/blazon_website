@@ -23,7 +23,7 @@
 
 @font-face {
   font-family: 'BrushScriptCustom';
-  src: url('/blazon_website/font/BrushScriptOpti-Regular.otf') format('opentype');
+  src: url('/font/BrushScriptOpti-Regular.otf') format('opentype');
 }
 
 .brush-font {
@@ -47,8 +47,13 @@
   transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
 }
-.flip-card:hover .flip-card-inner {
+.flip-card:hover .flip-card-inner,
+.flip-card.is-flipped .flip-card-inner {
   transform: rotateY(180deg);
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
 }
 .flip-card-front,
 .flip-card-back {
@@ -61,6 +66,15 @@
 }
 .flip-card-back {
   transform: rotateY(180deg);
+  pointer-events: none;
+}
+.flip-card:hover .flip-card-front,
+.flip-card.is-flipped .flip-card-front {
+  pointer-events: none;
+}
+.flip-card:hover .flip-card-back,
+.flip-card.is-flipped .flip-card-back {
+  pointer-events: auto;
 }
 
 @keyframes float {

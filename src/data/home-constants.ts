@@ -31,7 +31,7 @@ export const quickLinks = [
 
 export const stats = [
   { value: "2005", label: "Established" },
-  { value: "125+", label: "Products" },
+  { value: "110+", label: "Products" },
   { value: "Delhi", label: "Headquarters" },
   { value: "₹55L", label: "Paid Up Capital" },
 ];

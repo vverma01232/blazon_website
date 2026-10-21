@@ -30,6 +30,7 @@ import {
 } from "@/data/home-constants";
 import { homeStyles } from "@/styles/home-styles";
 import AnimatedDNA from "@/components/AnimatedDNA";
+import FlipCard from "@/components/FlipCard";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -124,6 +125,8 @@ export default function Home() {
 
           <button
             className="md:hidden text-white/70 hover:text-white"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <div className="w-6 h-5 flex flex-col justify-between">
@@ -146,6 +149,13 @@ export default function Home() {
                 {item}
               </a>
             ))}
+            <a
+              href="#contact"
+              className="hover:text-white py-1"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Get in Touch
+            </a>
           </div>
         )}
       </header>
@@ -167,10 +177,10 @@ export default function Home() {
               <img
                 src={blazonLogo}
                 alt="Blazon Biotek"
-                className="h-20 md:h-24 object-contain drop-shadow-xl brush-font"
+                className="h-16 sm:h-20 md:h-24 object-contain drop-shadow-xl"
               />
               <div>
-                <div className="text-white font-semibold text-[50px] leading-tight brush-font">
+                <div className="text-white font-semibold text-[1.65rem] sm:text-4xl md:text-[3.1rem] leading-tight brush-font">
                   Blazon Biotek Pvt. Ltd.
                 </div>
                 {/* <div className="text-white/80 text-sm">Pvt. Ltd.</div> */}
@@ -265,7 +275,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 place-items-center text-center">
             {[
               { value: "2005", label: "Established" },
-              { value: "125+", label: "Products" },
+              { value: String(allProducts.length), label: "Products" },
               { value: "Delhi", label: "Headquarters" },
             ].map(({ value, label }, i) => (
               <div key={i} className="flex flex-col items-center justify-center">
@@ -396,11 +406,11 @@ export default function Home() {
           {/* 4 featured product cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             {allProducts.slice(0, 4).map((product) => (
-              <div
+              <FlipCard
                 key={product.name}
-                className="flip-card glow-card"
+                className="glow-card"
                 style={{ height: "300px" }}
-                data-product-card
+                label={`Show details for ${product.name}`}
               >
                 <div className="flip-card-inner">
                   {/* FRONT */}
@@ -415,6 +425,8 @@ export default function Home() {
                       <img
                         src={product.image}
                         alt={product.name}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-contain"
                         onError={(e) => {
                           (e.target as HTMLImageElement).src =
@@ -430,7 +442,7 @@ export default function Home() {
                         <img src={arrow} alt="arrow" className="w-8 h-8" />
                       </div>
                       <div className="absolute bottom-2 right-2 text-white/20 text-[9px] uppercase tracking-widest">
-                        Hover
+                        Details
                       </div>
                     </div>
                     <div className="p-4 border-t border-white/5">
@@ -482,7 +494,7 @@ export default function Home() {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </FlipCard>
             ))}
           </div>
 
@@ -563,7 +575,7 @@ export default function Home() {
                 </div>
 
                 <p className="text-white/50 text-sm leading-relaxed mb-5">
-                  Swasthya Vihar, Opp. Bank of Maharastra <br />
+                  Swasthya Vihar, Opp. Bank of Maharashtra <br />
                   Modinagar, Ghaziabad - 201201
                 </p>
               </div>
@@ -724,9 +736,9 @@ export default function Home() {
                 <li className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                   <span className="text-white/40 text-xs leading-relaxed">
-                    RO- 1892 New Hariram Market Bhagirath Palac <br />
+                    RO- 1892 New Hariram Market, Bhagirath Palace <br />
                     Delhi, India - 110006 <br />
-                    HO- Swasthya Vihar, Opp. Bank of Maharastra <br />
+                    HO- Swasthya Vihar, Opp. Bank of Maharashtra <br />
                     Modinagar, Ghaziabad - 201201
                   </span>
                 </li>

@@ -4,6 +4,7 @@ import { Star, ArrowLeft, Search } from "lucide-react";
 import blazonLogo from "@/assets/logo.png";
 import arrow from "@/assets/aerrow.png";
 import { allProducts } from "@/data/products";
+import FlipCard from "@/components/FlipCard";
 
 const categories = [
   "All",
@@ -136,11 +137,11 @@ export default function Products() {
             </div>
           ) : (
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
-              {filtered.map((product) => (
-                <div
-                  key={product.name}
-                  className="flip-card"
+              {filtered.map((product, index) => (
+                <FlipCard
+                  key={`${product.name}-${index}`}
                   style={{ height: "340px" }}
+                  label={`Show details for ${product.name}`}
                 >
                   <div className="flip-card-inner">
 
@@ -156,6 +157,8 @@ export default function Products() {
                         <img
                           src={product.image}
                           alt={product.name}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-contain"
                           onError={(e) => {
                             (e.target as HTMLImageElement).src =
@@ -171,7 +174,7 @@ export default function Products() {
                           <img src={arrow} alt="arrow" className="w-8 h-8" />
                         </div>
                         <div className="absolute bottom-2 right-2 text-white/20 text-[9px] uppercase tracking-widest">
-                          Hover to view
+                          Details
                         </div>
                       </div>
                       <div className="p-4 border-t border-white/5">
@@ -230,7 +233,7 @@ export default function Products() {
                     </div>
 
                   </div>
-                </div>
+                </FlipCard>
               ))}
             </div>
           )}
