@@ -9,6 +9,8 @@ import {
   Award,
   Microscope,
   MessageCircle,
+  Menu,
+  X,
 } from "lucide-react";
 import blazonLogo from "@/assets/logo.png";
 import arrow from "@/assets/aerrow.png";
@@ -43,16 +45,17 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden pb-24 xl:pb-0 xl:pr-12">
       {/* ─── GLOBAL STYLES ─── */}
       <style>{homeStyles}</style>
 
       {/* ─── FLOATING CONTACT BUTTONS ─── */}
-      <div className="fixed bottom-6 right-5 z-[200] flex flex-col gap-3">
+      <div className="fixed inset-x-0 bottom-0 z-[200] flex justify-center gap-3 border-t border-white/10 bg-[#080c14]/95 px-4 py-3 backdrop-blur-xl pb-[max(0.75rem,env(safe-area-inset-bottom))] xl:inset-x-auto xl:bottom-6 xl:right-5 xl:w-auto xl:flex-col xl:border-0 xl:bg-transparent xl:p-0 xl:backdrop-blur-none">
         <a
           href={PHONE_1_TEL}
           title="Call us"
-          className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-110"
+          aria-label="Call us"
+          className="w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-110"
           style={{ background: "linear-gradient(135deg,#f97316,#ea580c)" }}
         >
           <Phone className="w-5 h-5 text-white" />
@@ -60,7 +63,8 @@ export default function Home() {
         <a
           href={`mailto:${EMAIL}`}
           title="Email us"
-          className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-110"
+          aria-label="Email us"
+          className="w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-110"
           style={{ background: "linear-gradient(135deg,#1a3c6e,#2563eb)" }}
         >
           <Mail className="w-5 h-5 text-white" />
@@ -70,7 +74,8 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
           title="Chat on WhatsApp"
-          className="w-12 h-12 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-110"
+          aria-label="Chat on WhatsApp"
+          className="w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-110"
           style={{ background: "linear-gradient(135deg,#128C7E,#25D366)" }}
         >
           <MessageCircle className="w-5 h-5 text-white" />
@@ -79,15 +84,15 @@ export default function Home() {
 
       {/* ─── NAVIGATION ─── */}
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
+        className={`fixed top-0 w-full z-50 transition-all duration-500 xl:pr-12 ${scrolled
             ? "bg-[#080c14]/90 backdrop-blur-xl border-b border-white/5 py-3"
             : "bg-transparent py-5"
           }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <a
-            href="#"
-            className={`flex items-center gap-3 transition-all duration-500 ${scrolled
+            href="#top"
+            className={`flex min-h-11 min-w-0 items-center gap-2 transition-all duration-500 ${scrolled
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-4 pointer-events-none"
               }`}
@@ -95,13 +100,13 @@ export default function Home() {
             <img
               src={blazonLogo}
               alt="Blazon Biotek"
-              className="h-10 object-contain rounded-md"
+              className="h-9 w-9 shrink-0 object-contain rounded-md sm:h-10 sm:w-auto"
             />
-            <div>
-              <div className="text-white font-bold text-[22px] leading-tight brush-font">
-                Blazon Biotek Pvt. Ltd.
+            <div className="min-w-0">
+              <div className="truncate text-white font-bold text-lg leading-tight brush-font sm:text-[22px]">
+                <span className="sm:hidden">Blazon</span>
+                <span className="hidden sm:inline">Blazon Biotek Pvt. Ltd.</span>
               </div>
-              {/* <div className="text-white/90 text-[13px]">Pvt. Ltd.</div> */}
             </div>
           </a>
 
@@ -110,30 +115,26 @@ export default function Home() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="hover:text-white transition-colors tracking-wide"
+                className="inline-flex min-h-11 items-center hover:text-white transition-colors tracking-wide"
               >
                 {item}
               </a>
             ))}
             <a
               href="#contact"
-              className="ml-2 px-5 py-2 rounded-full bg-orange-600 text-white text-sm font-semibold hover:bg-orange-600/70 transition-colors shadow-lg shadow-primary/25"
+              className="ml-2 inline-flex min-h-11 items-center px-5 rounded-full bg-orange-600 text-white text-sm font-semibold hover:bg-orange-600/70 transition-colors shadow-lg shadow-primary/25"
             >
               Get in Touch
             </a>
           </nav>
 
           <button
-            className="md:hidden text-white/70 hover:text-white"
+            className="md:hidden -mr-2 flex h-11 w-11 shrink-0 items-center justify-center text-white/80 hover:text-white"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <div className="w-6 h-5 flex flex-col justify-between">
-              <span className="h-px bg-current block" />
-              <span className="h-px bg-current block" />
-              <span className="h-px bg-current block" />
-            </div>
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
@@ -143,7 +144,7 @@ export default function Home() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="hover:text-white py-1"
+                className="hover:text-white flex min-h-11 items-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item}
@@ -151,7 +152,7 @@ export default function Home() {
             ))}
             <a
               href="#contact"
-              className="hover:text-white py-1"
+              className="hover:text-white flex min-h-11 items-center"
               onClick={() => setMobileMenuOpen(false)}
             >
               Get in Touch
@@ -161,14 +162,14 @@ export default function Home() {
       </header>
 
       {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section id="top" className="relative flex items-center overflow-hidden pt-16 pb-8 md:min-h-screen md:py-0">
         <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-orange-500 blur-[180px] opacity-40"></div>
         <AnimatedDNA />
 
-        <div className="container mx-auto px-6 md:px-12 relative z-10 pt-24">
+        <div className="container mx-auto px-5 sm:px-6 md:px-12 relative z-10 md:pt-24">
           {/* HERO LOGO */}
           <div
-            className={`transition-all duration-700 mb-6 ${scrolled
+            className={`transition-all duration-700 mb-1 min-[360px]:mb-3 md:mb-6 ${scrolled
                 ? "opacity-0 -translate-y-10"
                 : "opacity-100 translate-y-0"
               }`}
@@ -177,27 +178,27 @@ export default function Home() {
               <img
                 src={blazonLogo}
                 alt="Blazon Biotek"
-                className="h-16 sm:h-20 md:h-24 object-contain drop-shadow-xl"
+                className="h-12 sm:h-20 md:h-24 object-contain drop-shadow-xl"
               />
               <div>
-                <div className="text-white font-semibold text-[1.65rem] sm:text-4xl md:text-[3.1rem] leading-tight brush-font">
+                <div className="text-white font-semibold text-[1.45rem] min-[400px]:text-[1.7rem] sm:text-4xl md:text-[3.1rem] leading-tight brush-font">
                   Blazon Biotek Pvt. Ltd.
                 </div>
                 {/* <div className="text-white/80 text-sm">Pvt. Ltd.</div> */}
               </div>
             </div>
-            <div className="text-xs text-white/50 mb-2 mt-4 tracking-widest uppercase">
+            <div className="text-[10px] sm:text-xs text-white/50 mb-2 mt-2 md:mt-4 tracking-widest uppercase">
               Since 2005 • Trusted Pharma Partner
             </div>
           </div>
 
           {/* BADGE */}
-          <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs text-white/70 backdrop-blur-md mb-6">
+          <p className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs text-white/70 backdrop-blur-md mb-1 min-[360px]:mb-3 md:mb-6">
             WHO-GMP Certified Pharmaceutical Company
           </p>
 
           {/* HEADING */}
-          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+          <h1 className="text-[1.65rem] leading-none min-[380px]:text-[2rem] min-[380px]:leading-[1.05] sm:text-5xl sm:leading-tight md:text-6xl font-bold text-white">
             Healing.
             <br />
             <span className="font-serif-italic text-orange-500 font-semibold">
@@ -208,23 +209,23 @@ export default function Home() {
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="mt-6 text-white/70 max-w-xl">
+          <p className="mt-3 md:mt-6 text-sm sm:text-base text-white/70 max-w-xl">
             Blazon Biotek Private Limited – a Delhi-based pharmaceutical company
             specializing in sourcing and distributing safe, effective, and
             affordable medicines since 2005.
           </p>
 
           {/* BUTTONS */}
-          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="mt-4 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4">
             <Link
               href="/products"
-              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full shadow-lg transition"
+              className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-full shadow-lg transition"
             >
               Explore Products →
             </Link>
             <a
               href="#about"
-              className="border border-white/20 text-white px-6 py-3 rounded-full hover:bg-white/10 transition"
+              className="border border-white/20 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-full hover:bg-white/10 transition"
             >
               Learn More
             </a>
@@ -325,7 +326,7 @@ export default function Home() {
                 chemicals, and botanical products to healthcare providers across
                 India.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 {[
                   "Compliance you can trust",
                   "Quality medicines from verified sources",
@@ -367,7 +368,7 @@ export default function Home() {
                     className="flex justify-between items-start gap-4 pb-4 border-b border-white/5 last:border-0 last:pb-0"
                   >
                     <dt className="text-white/40 text-xs shrink-0">{label}</dt>
-                    <dd className="text-white/80 text-xs text-right font-mono">
+                    <dd className="text-white/80 text-xs text-right font-mono break-all">
                       {value}
                     </dd>
                   </div>
@@ -408,8 +409,7 @@ export default function Home() {
             {allProducts.slice(0, 4).map((product) => (
               <FlipCard
                 key={product.name}
-                className="glow-card"
-                style={{ height: "300px" }}
+                className="glow-card flip-card-home"
                 label={`Show details for ${product.name}`}
               >
                 <div className="flip-card-inner">
@@ -488,7 +488,7 @@ export default function Home() {
                     </div>
                     <Link
                       href="/products"
-                      className="mt-3 px-4 py-2 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary/90 transition text-center"
+                      className="mt-3 flex min-h-11 items-center justify-center px-4 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary/90 transition text-center"
                     >
                       View Details
                     </Link>
@@ -690,7 +690,7 @@ export default function Home() {
                   <li key={label}>
                     <a
                       href={href}
-                      className="text-white/45 text-sm hover:text-white transition-colors flex items-center gap-2 group"
+                      className="min-h-11 text-white/45 text-sm hover:text-white transition-colors flex items-center gap-2 group"
                     >
                       <span className="w-1 h-1 rounded-full bg-primary/60 group-hover:bg-primary transition-colors" />
                       {label}
@@ -700,7 +700,7 @@ export default function Home() {
                 <li>
                   <Link
                     href="/products"
-                    className="text-white/45 text-sm hover:text-white transition-colors flex items-center gap-2 group"
+                    className="min-h-11 text-white/45 text-sm hover:text-white transition-colors flex items-center gap-2 group"
                   >
                     <span className="w-1 h-1 rounded-full bg-primary/60 group-hover:bg-primary transition-colors" />
                     Product Gallery
@@ -747,20 +747,20 @@ export default function Home() {
                     <Phone className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                     <a
                       href={PHONE_1_TEL}
-                      className="text-white/40 text-xs hover:text-white transition-colors"
+                      className="inline-flex min-h-11 items-center text-white/40 text-xs hover:text-white transition-colors"
                     >
                       {PHONE_1}
                     </a>
                   </div>
                   <a
                     href={PHONE_2_TEL}
-                    className="text-white/40 text-xs hover:text-white transition-colors pl-7"
+                    className="inline-flex min-h-11 items-center text-white/40 text-xs hover:text-white transition-colors pl-7"
                   >
                     {PHONE_2}
                   </a>
                   <a
                     href={PHONE_3_TEL}
-                    className="text-white/40 text-xs hover:text-white transition-colors pl-7"
+                    className="inline-flex min-h-11 items-center text-white/40 text-xs hover:text-white transition-colors pl-7"
                   >
                     {PHONE_3}
                   </a>
@@ -769,7 +769,7 @@ export default function Home() {
                   <Mail className="w-4 h-4 text-primary shrink-0" />
                   <a
                     href={`mailto:${EMAIL}`}
-                    className="text-white/40 text-xs hover:text-white transition-colors break-all"
+                    className="inline-flex min-h-11 items-center text-white/40 text-xs hover:text-white transition-colors break-all"
                   >
                     {EMAIL}
                   </a>
@@ -783,7 +783,7 @@ export default function Home() {
                     href={WHATSAPP}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-primary hover:underline"
+                    className="inline-flex min-h-11 items-center text-xs text-primary hover:underline"
                   >
                     WhatsApp Us
                   </a>

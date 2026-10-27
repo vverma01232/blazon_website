@@ -43,15 +43,15 @@ export default function Products() {
     <div className="min-h-screen bg-background text-foreground font-sans">
       {/* Header */}
       <header className="bg-[#080c14]/95 backdrop-blur-xl border-b border-white/5 py-4 sticky top-0 z-50">
-        <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between gap-3">
+          <Link href="/" className="flex min-h-11 min-w-0 items-center gap-2">
             <img
               src={blazonLogo}
               alt="Blazon Biotek"
-              className="h-10 object-contain rounded-md"
+              className="h-9 w-9 shrink-0 object-contain rounded-md sm:h-10 sm:w-auto"
             />
-            <div>
-              <div className="text-white font-bold text-base leading-tight">
+            <div className="min-w-0">
+              <div className="truncate text-white font-bold text-sm sm:text-base leading-tight">
                 Blazon Biotek
               </div>
               <div className="text-white/35 text-xs">Pvt. Ltd.</div>
@@ -59,7 +59,7 @@ export default function Products() {
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm transition-colors"
+            className="inline-flex min-h-11 shrink-0 items-center gap-1.5 px-2 text-white/60 hover:text-white text-sm transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Home
@@ -97,21 +97,21 @@ export default function Products() {
               placeholder="Search by name, composition..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-full pl-11 pr-5 py-3 text-sm focus:outline-none focus:border-primary/50 transition-colors"
+              className="w-full bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-full pl-11 pr-5 py-3 text-base focus:outline-none focus:border-primary/50 transition-colors"
             />
           </div>
         </div>
       </section>
 
       {/* Category filter */}
-      <div className="sticky top-[65px] z-40 bg-[#080c14]/90 backdrop-blur-xl border-b border-white/5 py-3">
+      <div className="sticky top-[77px] z-40 bg-[#080c14]/90 backdrop-blur-xl border-b border-white/5 py-3">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`min-h-11 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                   activeCategory === cat
                     ? "bg-primary text-white shadow-lg shadow-primary/25"
                     : "bg-white/5 border border-white/10 text-white/50 hover:text-white hover:border-white/20"
@@ -140,7 +140,7 @@ export default function Products() {
               {filtered.map((product, index) => (
                 <FlipCard
                   key={`${product.name}-${index}`}
-                  style={{ height: "340px" }}
+                  className="flip-card-catalog"
                   label={`Show details for ${product.name}`}
                 >
                   <div className="flip-card-inner">
