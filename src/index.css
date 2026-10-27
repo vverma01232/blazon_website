@@ -90,6 +90,32 @@ section[id] {
   pointer-events: auto;
 }
 
+/* iPhone Safari paints a black gap when many 3D layers are composited. */
+@media (hover: none) {
+  .flip-card-inner {
+    transform: none !important;
+    transform-style: flat;
+    transition: none;
+  }
+  .flip-card-front,
+  .flip-card-back {
+    transform: none;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+  }
+  .flip-card-back {
+    visibility: hidden;
+  }
+  .flip-card.is-flipped .flip-card-front {
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .flip-card.is-flipped .flip-card-back {
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
 @keyframes float {
   0% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-20px) rotate(5deg); }

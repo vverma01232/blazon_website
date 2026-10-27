@@ -156,7 +156,7 @@ export const AnimatedDNA = React.memo(() => {
   }, []);
 
   return (
-    <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none overflow-hidden opacity-50 md:opacity-60">
+    <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/2 overflow-hidden opacity-60 md:block">
       <svg
         ref={svgRef}
         viewBox="0 0 600 700"

@@ -45,12 +45,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden pb-24 xl:pb-0 xl:pr-12">
+    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-clip pb-24 xl:pb-0 xl:pr-12">
       {/* ─── GLOBAL STYLES ─── */}
       <style>{homeStyles}</style>
 
       {/* ─── FLOATING CONTACT BUTTONS ─── */}
-      <div className="fixed inset-x-0 bottom-0 z-[200] flex justify-center gap-3 border-t border-white/10 bg-[#080c14]/95 px-4 py-3 backdrop-blur-xl pb-[max(0.75rem,env(safe-area-inset-bottom))] xl:inset-x-auto xl:bottom-6 xl:right-5 xl:w-auto xl:flex-col xl:border-0 xl:bg-transparent xl:p-0 xl:backdrop-blur-none">
+      <div className="fixed inset-x-0 bottom-0 z-[200] flex justify-center gap-3 border-t border-white/10 bg-[#080c14] px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] xl:inset-x-auto xl:bottom-6 xl:right-5 xl:w-auto xl:flex-col xl:border-0 xl:bg-transparent xl:p-0">
         <a
           href={PHONE_1_TEL}
           title="Call us"
@@ -85,7 +85,7 @@ export default function Home() {
       {/* ─── NAVIGATION ─── */}
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-500 xl:pr-12 ${scrolled
-            ? "bg-[#080c14]/90 backdrop-blur-xl border-b border-white/5 py-3"
+            ? "bg-[#080c14] md:bg-[#080c14]/90 md:backdrop-blur-xl border-b border-white/5 py-3"
             : "bg-transparent py-5"
           }`}
       >
@@ -163,7 +163,7 @@ export default function Home() {
 
       {/* ─── HERO ─── */}
       <section id="top" className="relative flex items-center overflow-hidden pt-16 pb-8 md:min-h-screen md:py-0">
-        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-orange-500 blur-[180px] opacity-40"></div>
+        <div className="absolute top-0 left-0 hidden h-[400px] w-[400px] bg-orange-500 opacity-40 blur-[180px] md:block"></div>
         <AnimatedDNA />
 
         <div className="container mx-auto px-5 sm:px-6 md:px-12 relative z-10 md:pt-24">

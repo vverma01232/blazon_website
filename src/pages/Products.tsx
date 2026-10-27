@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { Star, ArrowLeft, Search } from "lucide-react";
 import blazonLogo from "@/assets/logo.png";
 import arrow from "@/assets/aerrow.png";
 import { allProducts } from "@/data/products";
 import FlipCard from "@/components/FlipCard";
+
+const PAGE_SIZE = 12;
 
 const categories = [
   "All",
@@ -28,6 +30,8 @@ function StarRating({ rating }: { rating: number }) {
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   const filtered = allProducts.filter((p) => {
     const matchesCat =
@@ -39,10 +43,30 @@ export default function Products() {
     return matchesCat && matchesSearch;
   });
 
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [activeCategory, search]);
+
+  useEffect(() => {
+    const node = sentinelRef.current;
+    if (!node || visibleCount >= filtered.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        setVisibleCount((count) => Math.min(count + PAGE_SIZE, filtered.length));
+      },
+      { rootMargin: "700px 0px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [filtered.length, visibleCount]);
+
+  const shown = filtered.slice(0, visibleCount);
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       {/* Header */}
-      <header className="bg-[#080c14]/95 backdrop-blur-xl border-b border-white/5 py-4 sticky top-0 z-50">
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-[#080c14] py-4">
         <div className="container mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between gap-3">
           <Link href="/" className="flex min-h-11 min-w-0 items-center gap-2">
             <img
@@ -104,7 +128,7 @@ export default function Products() {
       </section>
 
       {/* Category filter */}
-      <div className="sticky top-[77px] z-40 bg-[#080c14]/90 backdrop-blur-xl border-b border-white/5 py-3">
+      <div className="sticky top-[77px] z-40 border-b border-white/5 bg-[#080c14] py-3">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
             {categories.map((cat) => (
@@ -137,7 +161,7 @@ export default function Products() {
             </div>
           ) : (
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
-              {filtered.map((product, index) => (
+              {shown.map((product, index) => (
                 <FlipCard
                   key={`${product.name}-${index}`}
                   className="flip-card-catalog"
@@ -236,6 +260,9 @@ export default function Products() {
                 </FlipCard>
               ))}
             </div>
+          )}
+          {visibleCount < filtered.length && (
+            <div ref={sentinelRef} className="h-8" aria-hidden="true" />
           )}
         </div>
       </section>
